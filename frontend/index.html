@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>go-s1000d</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-web.js"></script>
 </head>
 <body>
-$END$
+<h1>s100d-4.2全部元素</h1>
+<div id="content"></div>
+<script id="data" type="text/html">
+    <table>
+        <thead>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>version</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{each list v i}}
+        <tr>
+            <td>{{v.id}}</td>
+            <td>{{v.name}}</td>
+            <td>{{v.version}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<script>
+    $(function () {
+        $.get('http://localhost:8080/elements', {}, function (resp) {
+            console.log(1)
+            var data = {
+                list: JSON.parse(resp)
+            }
+            var html = template('data', data);
+            document.getElementById('content').innerHTML = html;
+        })
+    })
+</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
-package main
-func checkError(err error)  {
+package common
+func CheckError(err error)  {
 	if err!= nil {
 		panic(err)
 	}
