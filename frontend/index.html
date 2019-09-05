@@ -13,7 +13,7 @@
 <script id="data" type="text/html">
     <table>
         <thead>
-        <tr><td>序号</td>
+        <tr><td>index</td>
             <td>id</td>
             <td>name</td>
             <td>version</td>
@@ -25,7 +25,7 @@
             <td>{{i+1}}</td>
             <td>{{v.id}}</td>
             <td>{{v.name}}</td>
-            <td>{{v.version}}</td>
+            <td>{{ if v.version==1}}4.0{{else if v.version ==4}}4.2{{else if v.version==5}}4.0和4.2{{/if}}</td>
         </tr>
         {{/each}}
         </tbody>
