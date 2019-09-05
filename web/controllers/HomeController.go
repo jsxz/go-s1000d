@@ -10,14 +10,21 @@ type HomeController struct {
 	beego.Controller
 }
 
-func (c *HomeController) AllElement()  {
+func (c *HomeController) AllElement() {
 	element := models.AllElement()
 	bytes, _ := json.Marshal(element)
-	c.Data["json"]=string(bytes)
+	c.Data["json"] = string(bytes)
 	c.ServeJSON()
 }
+func (c *HomeController) AllXslt() {
+	data := models.AllXslt()
+	bytes, _ := json.Marshal(data)
+	c.Data["json"] = string(bytes)
+	c.ServeJSON()
+}
+
 func (c *HomeController) Index() {
 
-	c.Data["json"]="home index"
+	c.Data["json"] = "home index"
 	c.ServeJSON()
 }

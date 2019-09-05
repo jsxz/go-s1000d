@@ -8,24 +8,23 @@
     <script src="js/template-web.js"></script>
 </head>
 <body>
-<h1>s100d-4.2全部元素 <a target="_blank" href="xslt.html">xslt 所有match</a></h1>
+<h1>s100d-4.0 xslt match全部</h1>
 <div id="content"></div>
 <script id="data" type="text/html">
     <table>
         <thead>
         <tr><td>index</td>
-            <td>id</td>
-            <td>name</td>
-            <td>version</td>
+            <td>file</td>
+            <td>match</td>
+
         </tr>
         </thead>
         <tbody>
         {{each list v i}}
         <tr>
             <td>{{i+1}}</td>
-            <td>{{v.id}}</td>
-            <td>{{v.name}}</td>
-            <td>{{ if v.version==1}}4.0{{else if v.version ==4}}4.2{{else if v.version==5}}4.0和4.2{{/if}}</td>
+            <td>{{v.file}}</td>
+            <td>{{v.match}}</td>
         </tr>
         {{/each}}
         </tbody>
@@ -34,7 +33,7 @@
 
 <script>
     $(function () {
-        $.get('http://localhost:8080/elements', {}, function (resp) {
+        $.get('http://localhost:8080/xslt', {}, function (resp) {
             console.log(1)
             var data = {
                 list: JSON.parse(resp)

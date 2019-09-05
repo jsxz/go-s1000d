@@ -46,3 +46,18 @@ func ElementOne(name string) (models.Element, error) {
 		return models.Element{}, err
 	}
 }
+func XsltAdd(match, file string) bool {
+	obj := XsltOne(match)
+	if match == obj.Match {
+		fmt.Println(match + "已存在")
+		return false
+	}
+	_, err := DB.Exec("insert into `xslt` (`match`,`file`) values(?,?)", match, file)
+	common.CheckError(err)
+	return true
+}
+func XsltOne(match string) models.Xslt {
+	var mod models.Xslt
+	DB.QueryRowx("select * from `xslt` where `match`=? limit 1", match).StructScan(&mod)
+	return mod
+}
